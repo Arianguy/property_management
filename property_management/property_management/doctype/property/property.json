@@ -1,0 +1,227 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_import": 1,
+ "allow_rename": 1,
+ "creation": "2026-10-28 13:12:44.392688",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "name1",
+  "purchase_date",
+  "title_deed_no",
+  "mortgage_status",
+  "community",
+  "plot_no",
+  "bldg_no",
+  "bldg_name",
+  "property_no",
+  "floor_details",
+  "suite_area",
+  "balcony_area",
+  "area_sq_meter",
+  "common_area",
+  "area_sq_feet",
+  "owner_name",
+  "purchase_value",
+  "dewa_premise_no",
+  "dewa_account_no",
+  "status",
+  "sdeed",
+  "column_break_tobq",
+  "type",
+  "class"
+ ],
+ "fields": [
+  {
+   "fieldname": "name1",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Name",
+   "length": 50,
+   "reqd": 1
+  },
+  {
+   "default": "1 BHK",
+   "fieldname": "class",
+   "fieldtype": "Select",
+   "label": "Class",
+   "length": 20,
+   "options": "STUDIO\n1 BHK\n2 BHK\n3 BHK\nOFFICE\nWAREHOUSE",
+   "reqd": 1
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "length": 20,
+   "options": "Residential\nCommercial",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_date",
+   "fieldtype": "Date",
+   "label": "Purchase Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "title_deed_no",
+   "fieldtype": "Data",
+   "label": "Title Deed No",
+   "length": 20,
+   "reqd": 1
+  },
+  {
+   "fieldname": "mortgage_status",
+   "fieldtype": "Data",
+   "label": "Mortgage Status",
+   "length": 3,
+   "reqd": 1
+  },
+  {
+   "fieldname": "community",
+   "fieldtype": "Data",
+   "label": "Community",
+   "length": 50,
+   "reqd": 1
+  },
+  {
+   "fieldname": "plot_no",
+   "fieldtype": "Int",
+   "label": "Plot No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bldg_no",
+   "fieldtype": "Data",
+   "label": "Bldg No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bldg_name",
+   "fieldtype": "Data",
+   "label": "Bldg Name",
+   "length": 20,
+   "reqd": 1
+  },
+  {
+   "fieldname": "property_no",
+   "fieldtype": "Int",
+   "label": "Property No",
+   "reqd": 1
+  },
+  {
+   "fieldname": "floor_details",
+   "fieldtype": "Data",
+   "label": "Floor Details",
+   "length": 15,
+   "reqd": 1
+  },
+  {
+   "fieldname": "suite_area",
+   "fieldtype": "Float",
+   "label": "Suite Area",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "balcony_area",
+   "fieldtype": "Float",
+   "label": "Balcony Area",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area_sq_meter",
+   "fieldtype": "Float",
+   "label": "Area Sq Meter",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "common_area",
+   "fieldtype": "Float",
+   "label": "Common Area",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area_sq_feet",
+   "fieldtype": "Float",
+   "label": "Area Sq Feet",
+   "precision": "2",
+   "reqd": 1
+  },
+  {
+   "fieldname": "owner_name",
+   "fieldtype": "Link",
+   "label": "OwnerName",
+   "options": "Landlord",
+   "reqd": 1
+  },
+  {
+   "fieldname": "purchase_value",
+   "fieldtype": "Int",
+   "label": "Purchase Value",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dewa_premise_no",
+   "fieldtype": "Int",
+   "label": "DEWA Premise NO"
+  },
+  {
+   "fieldname": "dewa_account_no",
+   "fieldtype": "Int",
+   "label": "DEWA Account No"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "length": 12,
+   "options": "LEASED\nVACANT\nMAINTAINANCE\nSOLD",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sdeed",
+   "fieldtype": "Attach",
+   "label": "Sdeed",
+   "length": 200
+  },
+  {
+   "fieldname": "column_break_tobq",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-28 14:06:47.892745",
+ "modified_by": "Administrator",
+ "module": "Property Management",
+ "name": "Property",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "name1"
+}

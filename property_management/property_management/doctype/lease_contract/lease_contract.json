@@ -1,0 +1,176 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "ASH-.####",
+ "creation": "2026-10-28 18:12:38.376447",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lease_property",
+  "column_break_rcjo",
+  "tenant",
+  "contract_duration_details_section",
+  "contract_start",
+  "column_break_rjrg",
+  "contract_end",
+  "contract_value_details_section",
+  "contract_value",
+  "column_break_pvdf",
+  "security_deposit",
+  "rent_collection_section",
+  "payment_mode",
+  "number_of_pdcs",
+  "pdcs_table",
+  "misc_section",
+  "ejari_done",
+  "ejari",
+  "column_break_dipu",
+  "validity"
+ ],
+ "fields": [
+  {
+   "fieldname": "lease_property",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lease Property ",
+   "options": "Property",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_rcjo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "tenant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Tenant",
+   "options": "Tenant",
+   "reqd": 1
+  },
+  {
+   "fieldname": "contract_duration_details_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "contract_start",
+   "fieldtype": "Date",
+   "label": "Contract Start "
+  },
+  {
+   "fieldname": "column_break_rjrg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contract_end",
+   "fieldtype": "Date",
+   "label": "Contract End"
+  },
+  {
+   "fieldname": "contract_value_details_section",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "contract_value",
+   "fieldtype": "Int",
+   "label": "Contract Value",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pvdf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "security_deposit",
+   "fieldtype": "Int",
+   "label": "Security Deposit",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "rent_collection_section",
+   "fieldtype": "Section Break",
+   "label": "Rent Collection Details"
+  },
+  {
+   "default": "Cheque",
+   "fieldname": "payment_mode",
+   "fieldtype": "Select",
+   "label": "Payment Mode",
+   "options": "Cheque\nCash\nBank Transfer\nMixed",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "depends_on": "eval:doc.payment_mode == 'Cheque' || doc.payment_mode == 'Mixed'",
+   "description": "Number of Post Dated Cheques",
+   "fieldname": "number_of_pdcs",
+   "fieldtype": "Int",
+   "label": "Number of PDCs"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Cheque' || doc.payment_mode == 'Mixed'",
+   "fieldname": "pdcs_table",
+   "fieldtype": "Table",
+   "label": "PDC Details",
+   "options": "Lease Contract PDC"
+  },
+  {
+   "fieldname": "misc_section",
+   "fieldtype": "Section Break",
+   "label": "Misc"
+  },
+  {
+   "default": "0",
+   "fieldname": "ejari_done",
+   "fieldtype": "Check",
+   "label": "Ejari Done"
+  },
+  {
+   "depends_on": "eval:doc.ejari_done",
+   "fieldname": "ejari",
+   "fieldtype": "Attach",
+   "label": "Ejari",
+   "mandatory_depends_on": "eval:doc.ejari_done"
+  },
+  {
+   "fieldname": "column_break_dipu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "validity",
+   "fieldtype": "Select",
+   "label": "Validity",
+   "options": "Valid\nExpired\nDispute"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-28 19:16:17.756557",
+ "modified_by": "Administrator",
+ "module": "Property Management",
+ "name": "Lease Contract",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

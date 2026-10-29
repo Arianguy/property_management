@@ -2,6 +2,8 @@ app_name = "property_management"
 app_title = "Property Manage"
 app_publisher = "Savio Fernandes"
 app_description = "This App is for Manamging the rentals, tenants and properties"
+app_icon = "/assets/props/images/props_icon.svg"
+app_color = "#2563EB"
 app_email = "savio.vincent@gmail.com"
 app_license = "mit"
 
@@ -54,6 +56,9 @@ app_license = "mit"
 # include js in doctype views
 # doctype_js = {"doctype" : "public/js/doctype.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+doctype_list_js = {
+    "Property": "property_management/doctype/property/property_list.js",
+}
 # doctype_kanban_js = {"doctype" : "public/js/doctype_kanban.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -277,3 +282,13 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+# App configuration for Frappe v16 Desk
+add_to_apps_screen = [
+    {
+        "name": "property_management",
+        "logo": "/assets/property_management/images/props_icon.svg",
+        "title": "Property Management",
+        "route": "/desk/property-management",
+        "color": "#2563EB"
+    }
+]
