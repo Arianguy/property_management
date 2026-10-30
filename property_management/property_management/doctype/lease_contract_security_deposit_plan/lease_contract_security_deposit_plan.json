@@ -1,0 +1,108 @@
+{
+  "actions": [],
+  "allow_bulk_edit": 1,
+  "allow_rename": 1,
+  "creation": "2026-10-29 09:30:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "payment_mode",
+    "cheque_number",
+    "cheque_date",
+    "bank_name",
+    "amount",
+    "cheque_copy",
+    "transaction_id",
+    "bank_account",
+    "reference_number",
+    "receipt_number",
+    "receipt"
+  ],
+  "fields": [
+    {
+      "fieldname": "payment_mode",
+      "fieldtype": "Select",
+      "label": "Payment Mode",
+      "options": "Cheque\nCash\nBank Transfer",
+      "read_only": 1,
+      "hidden": 1
+    },
+    {
+      "fieldname": "cheque_number",
+      "fieldtype": "Data",
+      "label": "Cheque Number",
+      "depends_on": "eval:doc.payment_mode == 'Cheque'"
+    },
+    {
+      "fieldname": "cheque_date",
+      "fieldtype": "Date",
+      "label": "Cheque Date",
+      "depends_on": "eval:doc.payment_mode == 'Cheque'"
+    },
+    {
+      "fieldname": "bank_name",
+      "fieldtype": "Data",
+      "label": "Bank Name",
+      "depends_on": "eval:doc.payment_mode == 'Cheque'"
+    },
+    {
+      "fieldname": "amount",
+      "fieldtype": "Currency",
+      "label": "Amount",
+      "non_negative": 1,
+      "reqd": 1
+    },
+    {
+      "fieldname": "cheque_copy",
+      "fieldtype": "Attach",
+      "label": "Cheque Copy",
+      "depends_on": "eval:doc.payment_mode == 'Cheque'"
+    },
+    {
+      "fieldname": "transaction_id",
+      "fieldtype": "Data",
+      "label": "Transaction ID",
+      "depends_on": "eval:doc.payment_mode == 'Bank Transfer'"
+    },
+    {
+      "fieldname": "bank_account",
+      "fieldtype": "Link",
+      "label": "Bank Account",
+      "depends_on": "eval:doc.payment_mode == 'Bank Transfer'",
+      "options": "Bank Account"
+    },
+    {
+      "fieldname": "reference_number",
+      "fieldtype": "Data",
+      "label": "Reference Number",
+      "depends_on": "eval:doc.payment_mode == 'Bank Transfer'"
+    },
+    {
+      "fieldname": "receipt_number",
+      "fieldtype": "Data",
+      "label": "Receipt Number",
+      "depends_on": "eval:doc.payment_mode == 'Cash'"
+    },
+    {
+      "fieldname": "receipt",
+      "fieldtype": "Link",
+      "label": "Receipt",
+      "options": "Lease Contract Receipt",
+      "read_only": 1
+    }
+  ],
+  "grid_page_length": 50,
+  "index_web_pages_for_search": 1,
+  "istable": 1,
+  "links": [],
+  "modified": "2026-10-29 14:25:00.000000",
+  "modified_by": "Administrator",
+  "module": "Property Management",
+  "name": "Lease Contract Security Deposit Plan",
+  "naming_rule": "Set by user",
+  "owner": "Administrator",
+  "permissions": [],
+  "row_format": "Dynamic",
+  "sort_field": "creation",
+  "sort_order": "ASC"
+}

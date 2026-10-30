@@ -1,0 +1,302 @@
+{
+ "actions": [],
+ "allow_bulk_edit": 1,
+ "allow_rename": 1,
+ "autoname": "LCR-.####",
+ "creation": "2026-10-29 09:30:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "lease_contract",
+  "receipt_type",
+  "payment_mode",
+  "column_break_iqsv",
+  "receipt_date",
+  "received_by",
+  "amount",
+  "attachment",
+  "section_break_pdc",
+  "cheque_number",
+  "bank_name",
+  "deposited_date",
+  "cleared_date",
+  "column_break_ckpx",
+  "cheque_date",
+  "pdc_status",
+  "deposit_entry",
+  "clearing_entry",
+  "bounced_date",
+  "section_break_cash",
+  "cash_receipt_number",
+  "section_break_bank",
+  "transaction_id",
+  "bank_account",
+  "column_break_cape",
+  "reference_number",
+  "section_break_security",
+  "refund_status",
+  "refund_entry",
+  "adjustment_entry",
+  "column_break_fvgf",
+  "refund_date",
+  "refund_amount",
+  "section_break_common",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "lease_contract",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lease Contract",
+   "options": "Lease Contract",
+   "reqd": 1
+  },
+  {
+   "default": "Rent",
+   "fieldname": "receipt_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Receipt Type",
+   "options": "Rent\nSecurity Deposit\nAdvance\nOther",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_mode",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Payment Mode",
+   "options": "PDC\nCash\nBank Transfer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_common",
+   "fieldtype": "Section Break",
+   "label": "Common Details"
+  },
+  {
+   "default": "Today",
+   "fieldname": "receipt_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Receipt Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "received_by",
+   "fieldtype": "Link",
+   "label": "Received By",
+   "options": "User"
+  },
+  {
+   "fieldname": "amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Amount",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "attachment",
+   "fieldtype": "Attach",
+   "label": "Attachment (Cheque Copy / Receipt / Bank Advice)"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC'",
+   "fieldname": "section_break_pdc",
+   "fieldtype": "Section Break",
+   "label": "PDC Details"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC'",
+   "fieldname": "cheque_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cheque Number"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC'",
+   "fieldname": "cheque_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Cheque Date (Maturity)"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC'",
+   "fieldname": "bank_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Bank Name"
+  },
+  {
+   "default": "Received",
+   "depends_on": "eval:doc.payment_mode == 'PDC'",
+   "fieldname": "pdc_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "PDC Status",
+   "options": "Received\nDeposited\nCleared\nBounced\nCancelled"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC' && doc.pdc_status == 'Deposited'",
+   "fieldname": "deposited_date",
+   "fieldtype": "Date",
+   "label": "Deposited Date"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC' && doc.pdc_status == 'Cleared'",
+   "fieldname": "cleared_date",
+   "fieldtype": "Date",
+   "label": "Cleared Date"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC' && doc.pdc_status == 'Bounced'",
+   "fieldname": "bounced_date",
+   "fieldtype": "Date",
+   "label": "Bounced Date"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC' && doc.pdc_status == 'Deposited'",
+   "fieldname": "deposit_entry",
+   "fieldtype": "Link",
+   "label": "Deposit Entry (Journal Entry)",
+   "options": "Journal Entry"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'PDC' && doc.pdc_status == 'Cleared'",
+   "fieldname": "clearing_entry",
+   "fieldtype": "Link",
+   "label": "Clearing Entry (Payment Entry)",
+   "options": "Payment Entry"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Cash'",
+   "fieldname": "section_break_cash",
+   "fieldtype": "Section Break",
+   "label": "Cash Details"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Cash'",
+   "fieldname": "cash_receipt_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Cash Receipt Number",
+   "read_only": 1
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Bank Transfer'",
+   "fieldname": "section_break_bank",
+   "fieldtype": "Section Break",
+   "label": "Bank Transfer Details"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Bank Transfer'",
+   "fieldname": "transaction_id",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Transaction ID"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Bank Transfer'",
+   "fieldname": "bank_account",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Bank Account",
+   "options": "Bank Account"
+  },
+  {
+   "depends_on": "eval:doc.payment_mode == 'Bank Transfer'",
+   "fieldname": "reference_number",
+   "fieldtype": "Data",
+   "label": "Reference Number"
+  },
+  {
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit'",
+   "fieldname": "section_break_security",
+   "fieldtype": "Section Break",
+   "label": "Security Deposit Details"
+  },
+  {
+   "default": "Held",
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit'",
+   "fieldname": "refund_status",
+   "fieldtype": "Select",
+   "label": "Refund Status",
+   "options": "Held\nPartially Refunded\nFully Refunded\nAdjusted"
+  },
+  {
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit' && doc.refund_status == 'Fully Refunded'",
+   "fieldname": "refund_date",
+   "fieldtype": "Date",
+   "label": "Refund Date"
+  },
+  {
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit' && doc.refund_status != 'Held'",
+   "fieldname": "refund_amount",
+   "fieldtype": "Currency",
+   "label": "Refund Amount"
+  },
+  {
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit' && doc.refund_status != 'Held'",
+   "fieldname": "refund_entry",
+   "fieldtype": "Link",
+   "label": "Refund Entry (Payment Entry)",
+   "options": "Payment Entry"
+  },
+  {
+   "depends_on": "eval:doc.receipt_type == 'Security Deposit' && doc.refund_status == 'Adjusted'",
+   "fieldname": "adjustment_entry",
+   "fieldtype": "Link",
+   "label": "Adjustment Entry (Journal Entry)",
+   "options": "Journal Entry"
+  },
+  {
+   "fieldname": "column_break_iqsv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ckpx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_cape",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fvgf",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-10-30 11:12:21.022452",
+ "modified_by": "savio.vincent@gmail.com",
+ "module": "Property Management",
+ "name": "Lease Contract Receipt",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

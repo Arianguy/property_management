@@ -10,8 +10,7 @@
     "cheque_date",
     "bank_name",
     "amount",
-    "status",
-    "cleared_date"
+    "cheque_copy"
   ],
   "fields": [
     {
@@ -38,25 +37,25 @@
       "non_negative": 1,
       "reqd": 1
     },
-    {
-      "default": "Pending",
-      "fieldname": "status",
-      "fieldtype": "Select",
-      "label": "Status",
-      "options": "Pending\nCleared\nBounced\nCancelled"
-    },
-    {
-      "depends_on": "eval:doc.status == 'Cleared'",
-      "fieldname": "cleared_date",
-      "fieldtype": "Date",
-      "label": "Cleared Date"
-    }
+{
+    "fieldname": "cheque_copy",
+    "fieldtype": "Attach",
+    "label": "Cheque Copy",
+    "reqd": 1
+  },
+  {
+    "fieldname": "receipt",
+    "fieldtype": "Link",
+    "label": "Receipt",
+    "options": "Lease Contract Receipt",
+    "read_only": 1
+  }
   ],
   "grid_page_length": 50,
   "index_web_pages_for_search": 1,
   "istable": 1,
   "links": [],
-  "modified": "2026-10-28 18:50:00.000000",
+  "modified": "2026-10-29 09:30:00.000000",
   "modified_by": "Administrator",
   "module": "Property Management",
   "name": "Lease Contract PDC",
